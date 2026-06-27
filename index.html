@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -14,101 +13,121 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-    <!-- ================= HEADER ================= -->
+<header class="navbar">
+    <div class="container">
 
-    <header class="header">
+        <div class="logo">
+            Sweet Tangerine
+        </div>
 
-        <h1>🍊 Sweet Tangerine</h1>
+        <nav>
 
-        <p class="tagline">
-            Find your next favorite read.
+            <a href="#">Home</a>
+            <a href="#new">New Releases</a>
+            <a href="#categories">Categories</a>
+
+        </nav>
+
+    </div>
+</header>
+
+<section class="hero">
+
+    <div class="container">
+
+        <h1>Find your next favorite read.</h1>
+
+        <p>
+            Discover thousands of books from every genre.
         </p>
-
-    </header>
-
-
-    <!-- ================= SEARCH ================= -->
-
-    <section class="search-section">
 
         <input
             type="text"
             id="searchInput"
-            placeholder="Search by title or author..."
+            placeholder="Search title or author..."
         >
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ================= NEW RELEASES ================= -->
+<section id="new" class="section">
 
-    <section class="section">
+    <div class="container">
 
         <h2>✨ New Releases</h2>
 
-        <div id="newReleases" class="book-grid">
-
+        <div
+            id="newReleases"
+            class="book-grid">
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ================= CATEGORIES ================= -->
+<section id="categories" class="section">
 
-    <section class="section">
+    <div class="container">
 
-        <h2>Browse by Category</h2>
+        <h2>Browse Categories</h2>
 
         <div id="categoryButtons">
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- ================= BOOKS ================= -->
+<section class="section">
 
-    <section class="section">
+    <div class="container">
 
         <h2>Latest Books</h2>
 
-        <div id="bookContainer" class="book-grid">
+        <div
+            id="bookContainer"
+            class="book-grid">
 
         </div>
 
-    </section>
+    </div>
+
+</section>
+
+<section class="load-more">
+
+    <button id="loadMoreBtn">
+
+        Load More
+
+    </button>
+
+</section>
 
 
-    <!-- ================= LOAD MORE ================= -->
+<footer>
 
-    <section class="load-more">
-
-        <button id="loadMoreBtn">
-
-            Load More
-
-        </button>
-
-    </section>
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer>
+    <div class="container">
 
         © 2026 Sweet Tangerine
 
-    </footer>
+    </div>
 
+</footer>
 
 <script src="js/api.js"></script>
 <script src="js/script.js"></script>
 
 </body>
+
 </html>
