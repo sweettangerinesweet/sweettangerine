@@ -3,45 +3,109 @@
 
 <head>
 
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sweet Tangerine</title>
 
-<title>Sweet Tangerine</title>
+    <link rel="stylesheet" href="css/style.css">
 
-<link rel="stylesheet" href="css/style.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<header>
+    <!-- ================= HEADER ================= -->
 
-<h1>🍊 Sweet Tangerine</h1>
+    <header class="header">
 
-<p>Find your next favorite read.</p>
+        <h1>🍊 Sweet Tangerine</h1>
 
-</header>
+        <p class="tagline">
+            Find your next favorite read.
+        </p>
 
-<main>
+    </header>
 
-<section>
 
-<h2>✨ New Releases</h2>
+    <!-- ================= SEARCH ================= -->
 
-<p>Coming Soon...</p>
+    <section class="search-section">
 
-</section>
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search by title or author..."
+        >
 
-<section>
+    </section>
 
-<h2>📚 All Books</h2>
 
-<p>Loading books...</p>
+    <!-- ================= NEW RELEASES ================= -->
 
-</section>
+    <section class="section">
 
-</main>
+        <h2>✨ New Releases</h2>
+
+        <div id="newReleases" class="book-grid">
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CATEGORIES ================= -->
+
+    <section class="section">
+
+        <h2>Browse by Category</h2>
+
+        <div id="categoryButtons">
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= BOOKS ================= -->
+
+    <section class="section">
+
+        <h2>Latest Books</h2>
+
+        <div id="bookContainer" class="book-grid">
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= LOAD MORE ================= -->
+
+    <section class="load-more">
+
+        <button id="loadMoreBtn">
+
+            Load More
+
+        </button>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        © 2026 Sweet Tangerine
+
+    </footer>
+
 
 <script src="js/script.js"></script>
 
