@@ -1,1 +1,207 @@
 /* Sweet Tangerine Styles */
+/* ===========================
+   SWEET TANGERINE
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#FFF8F5;
+    color:#444;
+}
+
+/* Header */
+
+.header{
+    text-align:center;
+    padding:60px 20px 30px;
+}
+
+.header h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:58px;
+    color:#F76FB3;
+}
+
+.tagline{
+    margin-top:10px;
+    color:#777;
+}
+
+/* Search */
+
+.search-section{
+    max-width:700px;
+    margin:30px auto;
+    padding:0 20px;
+}
+
+#searchInput{
+    width:100%;
+    padding:15px 20px;
+    border:none;
+    border-radius:50px;
+    font-size:16px;
+    outline:none;
+    box-shadow:0 4px 12px rgba(0,0,0,.08);
+}
+
+/* Section */
+
+.section{
+    max-width:1200px;
+    margin:60px auto;
+    padding:0 20px;
+}
+
+.section h2{
+    margin-bottom:25px;
+    font-family:'Cormorant Garamond',serif;
+    color:#F76FB3;
+    font-size:38px;
+}
+
+/* Book Grid */
+
+.book-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fill,minmax(170px,1fr));
+
+    gap:25px;
+
+}
+
+/* Dummy Card */
+
+.book-card{
+
+    background:white;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+.book-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.book-card img{
+
+    width:100%;
+
+    display:block;
+
+}
+
+.book-info{
+
+    padding:15px;
+
+}
+
+.book-title{
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+}
+
+.book-author{
+
+    color:#888;
+
+    font-size:14px;
+
+}
+
+/* Button */
+
+.load-more{
+
+    text-align:center;
+
+    margin-bottom:80px;
+
+}
+
+.load-more button{
+
+    background:#F76FB3;
+
+    color:white;
+
+    border:none;
+
+    padding:14px 30px;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
+    font-size:16px;
+
+}
+
+.load-more button:hover{
+
+    background:#ef5ca6;
+
+}
+
+/* Footer */
+
+footer{
+
+    background:white;
+
+    padding:35px;
+
+    text-align:center;
+
+    color:#888;
+
+    margin-top:80px;
+
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.header h1{
+
+font-size:42px;
+
+}
+
+.section h2{
+
+font-size:30px;
+
+}
+
+.book-grid{
+
+grid-template-columns:
+repeat(2,1fr);
+
+}
+
+}
