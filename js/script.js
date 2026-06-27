@@ -1,53 +1,108 @@
-// ======================================
-// Sweet Tangerine
-// Main Script
-// ======================================
+// ===============================
+// Sweet Tangerine v1.0
+// ===============================
 
-let books = [];
+let allBooks = [];
+let displayedBooks = 24;
 
-// saat website dibuka
-window.onload = async function () {
+// ===============================
+// LOAD WEBSITE
+// ===============================
 
-    books = await getBooks();
+window.addEventListener("DOMContentLoaded", async () => {
 
-    console.log("Books loaded:", books.length);
+    allBooks = await getBooks();
 
-    renderBooks(books);
+    // Urutkan berdasarkan SORTED DATE (terbaru)
+    allBooks.sort((a, b) => new Date(b.sortedDate) - new Date(a.sortedDate));
 
-};
+    renderNewReleases();
+    renderBooks();
 
+});
 
-// menampilkan buku
-function renderBooks(bookList) {
+// ===============================
+// NEW RELEASES
+// ===============================
+
+function renderNewReleases() {
+
+    const container = document.getElementById("newReleases");
+
+    container.innerHTML = "";
+
+    allBooks.slice(0, 12).forEach(book => {
+
+        container.innerHTML += createBookCard(book);
+
+    });
+
+}
+
+// ===============================
+// LATEST BOOKS
+// ===============================
+
+function renderBooks(list = allBooks) {
 
     const container = document.getElementById("bookContainer");
 
     container.innerHTML = "";
 
-    bookList.forEach(book => {
+    list.slice(0, displayedBooks).forEach(book => {
 
-        container.innerHTML += `
-
-            <div class="book-card">
-
-                <img src="${book.cover}" alt="${book.title}">
-
-                <div class="book-info">
-
-                    <div class="book-title">
-                        ${book.title}
-                    </div>
-
-                    <div class="book-author">
-                        ${book.author}
-                    </div>
-
-                </div>
-
-            </div>
-
-        `;
+        container.innerHTML += createBookCard(book);
 
     });
 
 }
+
+// ===============================
+// BOOK CARD
+// ===============================
+
+function createBookCard(book) {
+
+    return `
+
+    <div class="book-card">
+
+        <img
+            src="${book.cover}"
+            alt="${book.title}"
+            loading="lazy"
+        >
+
+        <div class="book-info">
+
+            <div class="book-title">
+
+                ${book.title}
+
+            </div>
+
+            <div class="book-author">
+
+                ${book.author}
+
+            </div>
+
+        </div>
+
+    </div>
+
+    `;
+
+}
+
+// ===============================
+// LOAD MORE
+// ===============================
+
+document.getElementById("loadMoreBtn").addEventListener("click", () => {
+
+    displayedBooks += 24;
+
+    renderBooks();
+
+});
