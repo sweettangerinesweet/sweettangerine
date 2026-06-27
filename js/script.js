@@ -61,31 +61,41 @@ function renderBooks(list = allBooks) {
 // BOOK CARD
 // ===============================
 
-function createBookCard(book) {
+function createBookCard(book){
 
     return `
 
     <div class="book-card">
 
-        <img
-            src="${book.cover}"
-            alt="${book.title}"
-            loading="lazy"
-        >
+        <div class="cover">
+
+            <img
+                src="${book.cover}"
+                alt="${book.title}"
+                loading="lazy"
+            >
+
+        </div>
 
         <div class="book-info">
 
-            <div class="book-title">
+            <h3 class="book-title">
 
                 ${book.title}
 
-            </div>
+            </h3>
 
-            <div class="book-author">
+            <p class="book-author">
 
                 ${book.author}
 
-            </div>
+            </p>
+
+            <span class="book-category">
+
+                ${book.category}
+
+            </span>
 
         </div>
 
