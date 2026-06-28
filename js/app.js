@@ -1,14 +1,69 @@
+// ===============================
+// SWEET TANGERINE v2
+// APP
+// ===============================
+
 let allBooks = [];
+let filteredBooks = [];
+let currentCategory = "All";
+
+// ===============================
+// START
+// ===============================
 
 document.addEventListener("DOMContentLoaded", async () => {
 
     allBooks = await getBooks();
 
-    renderNewReleases();
+    filteredBooks = [...allBooks];
+
+    loadCategories();
 
     renderBooks();
 
+    initSearch();
+
+initCategoryFilter();
+
 });
+
+// ===============================
+// RENDER BOOKS
+// ===============================
+
+function renderBooks() {
+
+    const latestContainer = document.getElementById("bookGrid");
+    const newContainer = document.getElementById("newReleaseGrid");
+
+    if (!latestContainer || !newContainer) return;
+
+    latestContainer.innerHTML = "";
+    newContainer.innerHTML = "";
+
+    // Latest Books
+    filteredBooks
+        .slice(0, 24)
+        .forEach(book => {
+
+            latestContainer.innerHTML += createBookCard(book);
+
+        });
+
+    // New Releases
+    allBooks
+        .slice(0, 8)
+        .forEach(book => {
+
+            newContainer.innerHTML += createBookCard(book);
+
+        });
+
+}
+
+// ===============================
+// BOOK CARD
+// ===============================
 
 function createBookCard(book){
 
@@ -16,7 +71,11 @@ function createBookCard(book){
 
         <article class="book-card">
 
-            <img src="${book.cover}" alt="${book.title}">
+            <img
+                src="${book.cover}"
+                alt="${book.title}"
+                loading="lazy"
+            >
 
             <h3>${book.title}</h3>
 
@@ -28,34 +87,116 @@ function createBookCard(book){
 
 }
 
-function renderNewReleases(){
+// ===============================
+// LOAD CATEGORIES
+// ===============================
 
-    const container = document.getElementById("newReleaseGrid");
+function loadCategories(){
 
-    container.innerHTML = "";
+    const select = document.getElementById("categorySelect");
 
-    allBooks
-        .slice(0,8)
-        .forEach(book=>{
+    if(!select) return;
 
-            container.innerHTML += createBookCard(book);
+    // Kosongkan dropdown
+    select.innerHTML = `
+        <option value="All">📚 All Genres</option>
+    `;
 
-        });
+    // Ambil semua kategori unik
+    const categories = [...new Set(
+
+        allBooks
+            .map(book => book.category)
+            .filter(category => category)
+
+    )];
+
+    // Urutkan A-Z
+    categories.sort();
+
+    // Tambahkan ke dropdown
+    categories.forEach(category=>{
+
+        const option = document.createElement("option");
+
+        option.value = category;
+
+        option.textContent = category;
+
+        select.appendChild(option);
+
+    });
 
 }
 
-function renderBooks(){
+// ===============================
+// SEARCH
+// ===============================
 
-    const container = document.getElementById("bookGrid");
+function initSearch(){
 
-    container.innerHTML = "";
+    const input = document.getElementById("searchInput");
 
-    allBooks
-        .slice(0,24)
-        .forEach(book=>{
+    input.addEventListener("input", applyFilters);
 
-            container.innerHTML += createBookCard(book);
+}
 
-        });
+// ===============================
+// CATEGORY FILTER
+// ===============================
+
+function initCategoryFilter(){
+
+    const select = document.getElementById("categorySelect");
+
+    select.addEventListener("change", ()=>{
+
+        currentCategory = select.value;
+
+        applyFilters();
+
+    });
+
+}
+
+// ===============================
+// APPLY FILTERS
+// ===============================
+
+function applyFilters(){
+
+    const keyword = document
+        .getElementById("searchInput")
+        .value
+        .toLowerCase()
+        .trim();
+
+    filteredBooks = allBooks.filter(book=>{
+
+        const title = String(book.title || "").toLowerCase();
+
+const author = String(book.author || "").toLowerCase();
+
+const matchSearch =
+
+    title.includes(keyword)
+
+    ||
+
+    author.includes(keyword);
+
+        const matchCategory =
+
+            currentCategory==="All"
+
+            ||
+
+            book.category===currentCategory;
+
+        return matchSearch && matchCategory;
+
+    });
+
+    renderBooks();
 
 }
