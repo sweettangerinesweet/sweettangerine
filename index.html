@@ -2,136 +2,121 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Sweet Tangerine</title>
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet"
+          href="css/style.css">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<header class="navbar">
-    <div class="container">
+    <!-- =========================
+            HEADER
+    ========================== -->
+
+    <header>
 
         <div class="logo">
-            Sweet Tangerine
+
+            🍊 Sweet Tangerine
+
         </div>
 
-        <nav>
+    </header>
 
-            <a href="#">Home</a>
-            <a href="#new">New Releases</a>
-            <a href="#categories">Categories</a>
 
-        </nav>
+    <!-- =========================
+             HERO
+    ========================== -->
 
-    </div>
-</header>
+    <section class="hero">
 
-<section class="hero">
+        <h1>
 
-    <div class="container">
+            Find your next favorite read.
 
-        <h1>Find your next favorite read.</h1>
+        </h1>
 
         <p>
+
             Discover thousands of books from every genre.
+
         </p>
 
         <input
-            type="text"
             id="searchInput"
+            type="text"
             placeholder="Search title or author..."
         >
 
-    </div>
-
-</section>
-
-<section class="quick-categories">
-
-    <div class="container">
-
-        <h3>Browse Categories</h3>
-
-        <div id="categoryButtons" class="category-list">
-
-        </div>
-
-    </div>
-
-</section>
-<section id="new" class="section">
-
-    <div class="section-title">
-
-    <h2>✨ New Releases</h2>
-
-    <span id="viewAll">View All →</span>
-
-</div>
-
-    </div>
-
-</section>
+    </section>
 
 
-<section id="categories" class="section">
+    <!-- =========================
+            BOOKS
+    ========================== -->
 
-    <div class="container">
+<main>
 
-        <h2>Browse Categories</h2>
+    <!-- NEW RELEASES -->
 
-        <div id="categoryButtons">
+    <section class="section">
+
+        <div class="section-header">
+
+            <h2>✨ New Releases</h2>
+
+            <a href="#" id="viewAllNew">View All</a>
 
         </div>
 
-    </div>
+        <div id="newReleaseGrid" class="book-grid">
 
-</section>
+        </div>
 
-
-<section class="section">
-
-    <div class="section-title">
-    <h2>Latest Books</h2>
-</div>
-
-    </div>
-
-</section>
-
-<section class="load-more">
-
-    <button id="loadMoreBtn">
-
-        Load More
-
-    </button>
-
-</section>
+    </section>
 
 
-<footer>
+    <!-- ALL BOOKS -->
 
-    <div class="container">
+    <section class="section">
+
+        <div class="section-header">
+
+            <h2>📚 Latest Books</h2>
+
+        </div>
+
+        <div id="bookGrid" class="book-grid">
+
+        </div>
+
+    </section>
+
+</main>
+
+
+    <!-- =========================
+            FOOTER
+    ========================== -->
+
+    <footer>
 
         © 2026 Sweet Tangerine
 
-    </div>
+    </footer>
 
-</footer>
 
-<script src="js/api.js"></script>
-<script src="js/script.js"></script>
+    <script src="js/api.js"></script>
+
+    <script src="js/app.js"></script>
 
 </body>
 
