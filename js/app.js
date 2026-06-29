@@ -33,13 +33,32 @@ initCategoryFilter();
 
 function renderBooks() {
 
+    const latestSection = document.getElementById("latestSection");
     const latestContainer = document.getElementById("bookGrid");
     const newContainer = document.getElementById("newReleaseGrid");
+    const emptyState = document.getElementById("emptyState");
 
-    if (!latestContainer || !newContainer) return;
+    if (!latestSection || !latestContainer || !newContainer) return;
 
     latestContainer.innerHTML = "";
     newContainer.innerHTML = "";
+
+    // Empty State
+    if (emptyState) {
+
+        if (filteredBooks.length === 0) {
+
+            latestSection.style.display = "none";
+            emptyState.style.display = "block";
+
+        } else {
+
+            latestSection.style.display = "block";
+            emptyState.style.display = "none";
+
+        }
+
+    }
 
     // Latest Books
     filteredBooks
