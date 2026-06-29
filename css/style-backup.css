@@ -512,64 +512,6 @@ CATEGORY FILTER
 
 }
 
-/* ===============================
-   LIBRARY STATS
-================================ */
-
-.stats{
-
-    max-width:1100px;
-
-    margin:20px auto 60px;
-
-    padding:0 20px;
-
-    display:grid;
-
-    grid-template-columns:repeat(3,1fr);
-
-    gap:24px;
-
-}
-
-.stat-card{
-
-    background:white;
-
-    border-radius:20px;
-
-    padding:28px;
-
-    text-align:center;
-
-    box-shadow:0 8px 24px rgba(15,23,42,.08);
-
-}
-
-.stat-icon{
-
-    font-size:34px;
-
-    margin-bottom:14px;
-
-}
-
-.stat-card h3{
-
-    font-size:34px;
-
-    color:var(--primary);
-
-    margin-bottom:8px;
-
-}
-
-.stat-card p{
-
-    color:var(--text-light);
-
-}
-
 @media (max-width:768px){
 
     .header-container{
@@ -660,11 +602,6 @@ CATEGORY FILTER
         gap:8px;
 
     }
-.stats{
-
-    grid-template-columns:1fr;
-
-}
 
 }
 

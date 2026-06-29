@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     filteredBooks = [...allBooks];
 
+    updateStatistics();
+
     loadCategories();
 
     renderBooks();
@@ -217,5 +219,40 @@ const matchSearch =
     });
 
     renderBooks();
+
+}
+
+// ===============================
+// LIBRARY STATISTICS
+// ===============================
+
+function updateStatistics(){
+
+    const bookCount = document.getElementById("bookCount");
+    const authorCount = document.getElementById("authorCount");
+    const genreCount = document.getElementById("genreCount");
+
+    if(!bookCount || !authorCount || !genreCount) return;
+
+    // Total Books
+    bookCount.textContent = allBooks.length.toLocaleString();
+
+    // Total Authors
+    const authors = new Set(
+        allBooks
+            .map(book => book.author)
+            .filter(author => author)
+    );
+
+    authorCount.textContent = authors.size.toLocaleString();
+
+    // Total Genres
+    const genres = new Set(
+        allBooks
+            .map(book => book.category)
+            .filter(category => category)
+    );
+
+    genreCount.textContent = genres.size.toLocaleString();
 
 }
