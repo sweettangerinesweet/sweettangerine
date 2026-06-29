@@ -6,7 +6,7 @@
 let allBooks = [];
 let filteredBooks = [];
 let currentCategory = "All";
-
+let currentSort = "default";
 let booksPerPage = 24;
 
 // ===============================
@@ -28,6 +28,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     initSearch();
 
     initCategoryFilter();
+
+    initSort();
 
     initLoadMore();
 
@@ -214,6 +216,26 @@ function initCategoryFilter(){
 }
 
 // ===============================
+// SORT
+// ===============================
+
+function initSort(){
+
+    const select = document.getElementById("sortSelect");
+
+    if(!select) return;
+
+    select.addEventListener("change", ()=>{
+
+        currentSort = select.value;
+
+        applyFilters();
+
+    });
+
+}
+
+// ===============================
 // APPLY FILTERS
 // ===============================
 
@@ -224,6 +246,8 @@ function applyFilters(){
         .value
         .toLowerCase()
         .trim();
+    
+    booksPerPage = 24;
 
     filteredBooks = allBooks.filter(book=>{
 
@@ -250,6 +274,74 @@ const matchSearch =
         return matchSearch && matchCategory;
 
     });
+
+    // ===============================
+// SORTING
+// ===============================
+
+switch(currentSort){
+
+    case "titleAsc":
+
+        filteredBooks.sort((a,b)=>
+
+            a.title.localeCompare(b.title)
+
+        );
+
+        break;
+
+    case "titleDesc":
+
+        filteredBooks.sort((a,b)=>
+
+            b.title.localeCompare(a.title)
+
+        );
+
+        break;
+
+    case "authorAsc":
+
+        filteredBooks.sort((a,b)=>
+
+            a.author.localeCompare(b.author)
+
+        );
+
+        break;
+
+    case "authorDesc":
+
+        filteredBooks.sort((a,b)=>
+
+            b.author.localeCompare(a.author)
+
+        );
+
+        break;
+
+    case "newest":
+
+        filteredBooks.sort((a,b)=>
+
+            new Date(b.publishedDate)-new Date(a.publishedDate)
+
+        );
+
+        break;
+
+    case "oldest":
+
+        filteredBooks.sort((a,b)=>
+
+            new Date(a.publishedDate)-new Date(b.publishedDate)
+
+        );
+
+        break;
+
+}
 
     renderBooks();
 

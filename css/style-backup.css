@@ -473,6 +473,20 @@ CATEGORY FILTER
 }
 
 /* ===============================
+   FILTER ROW
+================================ */
+
+.filter-row{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:16px;
+
+}
+
+/* ===============================
    EMPTY STATE
 ================================ */
 
@@ -600,6 +614,12 @@ CATEGORY FILTER
         align-items:flex-start;
 
         gap:8px;
+
+    }
+
+     .filter-row{
+
+        grid-template-columns:1fr;
 
     }
 

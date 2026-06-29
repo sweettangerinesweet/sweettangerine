@@ -78,13 +78,31 @@
         placeholder="Search books or authors..."
     >
 
-    <select id="categorySelect">
+    <div class="filter-row">
 
-        <option value="All">
-            📚 All Genres
-        </option>
+        <select id="categorySelect">
 
-    </select>
+        </select>
+
+        <select id="sortSelect">
+
+            <option value="default">↕ Sort By</option>
+
+            <option value="newest">Newest</option>
+
+            <option value="oldest">Oldest</option>
+
+            <option value="titleAsc">Title A–Z</option>
+
+            <option value="titleDesc">Title Z–A</option>
+
+            <option value="authorAsc">Author A–Z</option>
+
+            <option value="authorDesc">Author Z–A</option>
+
+        </select>
+
+    </div>
 
 </div>
 
