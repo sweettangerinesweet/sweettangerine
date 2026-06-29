@@ -7,6 +7,8 @@ let allBooks = [];
 let filteredBooks = [];
 let currentCategory = "All";
 
+let booksPerPage = 24;
+
 // ===============================
 // START
 // ===============================
@@ -25,7 +27,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     initSearch();
 
-initCategoryFilter();
+    initCategoryFilter();
+
+    initLoadMore();
 
 });
 
@@ -39,13 +43,17 @@ function renderBooks() {
     const latestContainer = document.getElementById("bookGrid");
     const newContainer = document.getElementById("newReleaseGrid");
     const emptyState = document.getElementById("emptyState");
+    const button = document.getElementById("loadMoreBtn");
 
     if (!latestSection || !latestContainer || !newContainer) return;
 
     latestContainer.innerHTML = "";
     newContainer.innerHTML = "";
 
-    // Empty State
+    // ===============================
+    // EMPTY STATE
+    // ===============================
+
     if (emptyState) {
 
         if (filteredBooks.length === 0) {
@@ -62,16 +70,22 @@ function renderBooks() {
 
     }
 
-    // Latest Books
+    // ===============================
+    // LATEST BOOKS
+    // ===============================
+
     filteredBooks
-        .slice(0, 24)
+        .slice(0, booksPerPage)
         .forEach(book => {
 
             latestContainer.innerHTML += createBookCard(book);
 
         });
 
-    // New Releases
+    // ===============================
+    // NEW RELEASES
+    // ===============================
+
     allBooks
         .slice(0, 8)
         .forEach(book => {
@@ -80,7 +94,26 @@ function renderBooks() {
 
         });
 
+    // ===============================
+    // LOAD MORE BUTTON
+    // ===============================
+
+    if (button) {
+
+        if (booksPerPage >= filteredBooks.length) {
+
+            button.style.display = "none";
+
+        } else {
+
+            button.style.display = "inline-block";
+
+        }
+
+    }
+
 }
+
 
 // ===============================
 // BOOK CARD
@@ -254,5 +287,25 @@ function updateStatistics(){
     );
 
     genreCount.textContent = genres.size.toLocaleString();
+
+}
+
+// ===============================
+// LOAD MORE
+// ===============================
+
+function initLoadMore(){
+
+    const button = document.getElementById("loadMoreBtn");
+
+    if(!button) return;
+
+    button.addEventListener("click", ()=>{
+
+        booksPerPage += 24;
+
+        renderBooks();
+
+    });
 
 }
