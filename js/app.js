@@ -17,6 +17,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     allBooks = await getBooks();
 
+    console.table(allBooks.slice(0,5));
+
     filteredBooks = [...allBooks];
 
     updateStatistics();
