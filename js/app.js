@@ -118,6 +118,32 @@ function renderBooks() {
 
 }
 
+function renderStars(stars){
+
+    const total = 5;
+
+    const filled = Math.max(
+        0,
+        Math.min(total, Number(stars) || 0)
+    );
+
+    let html = "";
+
+    for(let i = 1; i <= total; i++){
+
+        html += `
+            <span class="${
+                i <= filled
+                    ? "star filled"
+                    : "star"
+            }">★</span>
+        `;
+
+    }
+
+    return html;
+
+}
 
 // ===============================
 // BOOK CARD
@@ -137,7 +163,21 @@ function createBookCard(book){
 
             <h3>${book.title}</h3>
 
-            <p>${book.author}</p>
+            <div class="book-meta">
+
+                <span class="book-author">
+
+                    ${book.author}
+
+                </span>
+
+                <div class="book-stars">
+
+                    ${renderStars(book.stars)}
+
+                </div>
+
+            </div>
 
         </article>
 
