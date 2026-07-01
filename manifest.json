@@ -1,0 +1,11 @@
+{
+  "name": "Sweet Tangerine",
+  "short_name": "Tangerine",
+  "description": "Your Personal Library",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#FAFAF9",
+  "theme_color": "#F97316",
+  "orientation": "portrait",
+  "icons": []
+}

@@ -116,6 +116,25 @@ function renderBooks() {
 
     }
 
+    // ===============================
+    // BOOK CARD EVENTS
+    // ===============================
+
+    document
+    .querySelectorAll(".book-card")
+    .forEach(card => {
+
+        card.addEventListener("click", () => {
+
+            const id = Number(card.dataset.id);
+
+            openBookSheet(id);
+
+        });
+
+    });
+
+
 }
 
 function renderStars(stars){
@@ -153,7 +172,7 @@ function createBookCard(book){
 
     return `
 
-        <article class="book-card">
+        <article class="book-card" data-id="${book.id}">
 
             <img
                 src="${book.cover}"
@@ -318,10 +337,10 @@ const matchSearch =
     });
 
     // ===============================
-// SORTING
-// ===============================
+    // SORTING
+    // ===============================
 
-switch(currentSort){
+    switch(currentSort){
 
     case "titleAsc":
 
@@ -443,3 +462,86 @@ function initLoadMore(){
     });
 
 }
+
+// ===============================
+// BOOK SHEET
+// ===============================
+
+const bookSheet = document.getElementById("bookSheet");
+
+const sheetContent = document.getElementById("sheetContent");
+
+const closeSheet = document.getElementById("closeSheet");
+
+function formatDate(date){
+
+    return new Date(date).toLocaleDateString(
+        "en-US",
+        {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+        }
+    );
+
+}
+
+function openBookSheet(id){
+
+    const book = allBooks.find(book => book.id == id);
+
+    console.log(book);
+
+    if(!book) return;
+
+    sheetContent.innerHTML = `
+
+        <img
+            src="${book.cover}"
+            alt="${book.title}"
+            class="sheet-cover"
+        >
+
+        <h2>${book.title}</h2>
+
+        <p class="sheet-author">
+
+            ${book.author}
+
+        </p>
+
+        <p class="sheet-category">
+
+            ${book.category}
+
+        </p>
+
+        <div class="sheet-stars">
+
+            ${renderStars(book.stars)}
+
+        </div>
+
+        <p class="sheet-date">
+
+            ${formatDate(book.publishedDate)}
+            
+        </p>
+
+    `;
+
+    bookSheet.classList.add("active");
+
+}
+
+function closeBookSheet(){
+
+    bookSheet.classList.remove("active");
+
+}
+
+closeSheet.addEventListener("click", closeBookSheet);
+
+document
+    .querySelector(".sheet-overlay")
+    .addEventListener("click", closeBookSheet);
