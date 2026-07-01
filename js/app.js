@@ -37,6 +37,16 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 });
 
+document.addEventListener("keydown", event => {
+
+    if(event.key === "Escape"){
+
+        closeBookSheet();
+
+    }
+
+});
+
 // ===============================
 // RENDER BOOKS
 // ===============================
@@ -490,8 +500,6 @@ function openBookSheet(id){
 
     const book = allBooks.find(book => book.id == id);
 
-    console.log(book);
-
     if(!book) return;
 
     sheetContent.innerHTML = `
@@ -502,7 +510,11 @@ function openBookSheet(id){
             class="sheet-cover"
         >
 
-        <h2>${book.title}</h2>
+        <h2 class="sheet-title">
+
+        ${book.title}
+
+        </h2>
 
         <p class="sheet-author">
 
@@ -522,21 +534,29 @@ function openBookSheet(id){
 
         </div>
 
-        <p class="sheet-date">
+        <div class="sheet-published">
 
+            <span>Published</span>
+
+            <strong>
             ${formatDate(book.publishedDate)}
-            
-        </p>
+            </strong>
+
+    </div>
 
     `;
 
     bookSheet.classList.add("active");
+
+    document.body.style.overflow = "hidden";
 
 }
 
 function closeBookSheet(){
 
     bookSheet.classList.remove("active");
+
+    document.body.style.overflow = "";
 
 }
 

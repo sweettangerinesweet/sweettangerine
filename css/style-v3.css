@@ -782,31 +782,49 @@ CATEGORY FILTER
 
     position:absolute;
 
-    left:0;
-
-    right:0;
+    left:50%;
 
     bottom:0;
 
+    transform:translateX(-50%);
+
+    width:min(560px,95%);
+
     background:white;
 
-    border-radius:24px 24px 0 0;
+    border-radius:28px 28px 0 0;
 
-    padding:28px;
+    padding:48px 32px 36px;
 
-    min-height:320px;
+    animation:sheetUp .28s ease;
 
 }
 
-.sheet-body h2{
+.sheet-body{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.sheet-title{
+
+    width:100%;
 
     text-align:center;
 
-    font-size:28px;
+    font-size:30px;
 
-    margin-bottom:12px;
+    font-weight:700;
 
-    line-height:1.4;
+    line-height:1.3;
+
+    margin:0 0 18px;
+
+    color:var(--text);
 
 }
 
@@ -814,9 +832,9 @@ CATEGORY FILTER
 
     position:absolute;
 
-    top:18px;
+    top:24px;
 
-    right:18px;
+    right:24px;
 
     width:40px;
 
@@ -836,45 +854,65 @@ CATEGORY FILTER
 
 .sheet-cover{
 
-    width:180px;
+    width:210px;
+
+    max-width:70%;
 
     aspect-ratio:2/3;
 
     object-fit:cover;
 
-    border-radius:16px;
+    border-radius:18px;
 
     display:block;
 
-    margin:0 auto 24px;
+    margin:0 auto 28px;
+
+    box-shadow:0 18px 40px rgba(15,23,42,.18);
+
+    transition:.3s;
+
+}
+
+.sheet-cover:hover{
+
+    transform:scale(1.03);
 
 }
 
 .sheet-author{
+    
+    text-align:center;
 
     color:var(--text-light);
 
-    text-align:center;
+    font-size:16px;
 
-    margin-bottom:10px;
+    margin-bottom:18px;
 
 }
 
 .sheet-category{
 
-    display:inline-block;
+    display:inline-flex;
 
-    background:var(--primary-light);
+    align-items:center;
+
+    gap:8px;
+
+    background:#FFF7ED;
 
     color:var(--primary);
 
-    padding:8px 16px;
+    padding:8px 18px;
 
     border-radius:999px;
 
-    margin:0 auto 20px;
+    font-size:14px;
 
-    display:block;
+    font-weight:500;
+
+    margin:0 auto 22px;
 
     width:max-content;
 
@@ -886,9 +924,11 @@ CATEGORY FILTER
 
     justify-content:center;
 
-    gap:4px;
+    gap:6px;
 
-    margin-bottom:20px;
+    margin-bottom:22px;
+
+    font-size:18px;
 
 }
 
@@ -897,6 +937,70 @@ CATEGORY FILTER
     text-align:center;
 
     color:var(--text-light);
+
+}
+
+.sheet-published{
+
+    border-top:1px solid var(--border);
+
+    padding-top:22px;
+
+    margin-top:22px;
+
+    text-align:center;
+
+}
+
+.sheet-published span{
+
+    display:block;
+
+    color:var(--text-light);
+
+    font-size:13px;
+
+    margin-bottom:6px;
+
+}
+
+.sheet-published strong{
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+.sheet-title{
+
+    width:100%;
+
+    text-align:center;
+
+    font-size:32px;
+
+    font-weight:700;
+
+    line-height:1.3;
+
+    margin:0 0 18px;
+
+}
+
+#closeSheet{
+
+    transition:.25s;
+
+}
+
+#closeSheet:hover{
+
+    background:var(--primary);
+
+    color:white;
+
+    transform:rotate(90deg);
 
 }
 
@@ -1074,6 +1178,26 @@ CATEGORY FILTER
     .stat-card p{
 
         font-size:11px;
+
+    }
+
+}
+
+@keyframes sheetUp{
+
+    from{
+
+        transform:translate(-50%,100%);
+
+        opacity:.4;
+
+    }
+
+    to{
+
+        transform:translate(-50%,0);
+
+        opacity:1;
 
     }
 
