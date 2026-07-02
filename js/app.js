@@ -17,8 +17,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     allBooks = await getBooks();
 
-    console.table(allBooks.slice(0,5));
-
     filteredBooks = [...allBooks];
 
     updateStatistics();
@@ -55,15 +53,13 @@ function renderBooks() {
 
     const latestSection = document.getElementById("latestSection");
     const latestContainer = document.getElementById("bookGrid");
-    const newContainer = document.getElementById("newReleaseGrid");
-    const emptyState = document.getElementById("emptyState");
+    const emptyState = document.getElementById("emptyState"); 
     const button = document.getElementById("loadMoreBtn");
 
-    if (!latestSection || !latestContainer || !newContainer) return;
+    if (!latestSection || !latestContainer) return;
 
     latestContainer.innerHTML = "";
-    newContainer.innerHTML = "";
-
+    
     // ===============================
     // EMPTY STATE
     // ===============================
@@ -93,18 +89,6 @@ function renderBooks() {
         .forEach(book => {
 
             latestContainer.innerHTML += createBookCard(book);
-
-        });
-
-    // ===============================
-    // NEW RELEASES
-    // ===============================
-
-    allBooks
-        .slice(0, 8)
-        .forEach(book => {
-
-            newContainer.innerHTML += createBookCard(book);
 
         });
 
