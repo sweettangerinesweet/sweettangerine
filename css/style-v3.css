@@ -28,6 +28,12 @@
 
 }
 
+html{
+
+    scroll-behavior:smooth;
+
+}
+
 /* Layout */
 
 --header-height:72px;
@@ -76,7 +82,7 @@ img{
 
 }
 
-a{
+{
 
     text-decoration:none;
 
@@ -202,8 +208,6 @@ header{
 
     width:100%;
 
-    max-width:600px;
-
     height:var(--search-height);
 
     border-radius:999px;
@@ -287,6 +291,36 @@ footer small{
 
 }
 
+/* ===============================
+   FOOTER STATS
+================================ */
+
+.footer-stats{
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:18px;
+
+    margin:18px 0;
+
+    font-size:14px;
+
+    color:var(--text-light);
+
+}
+
+.footer-stats strong{
+
+    color:var(--primary);
+
+    font-weight:600;
+
+}
+
 
 /* ===============================
    BOOK CARD
@@ -324,6 +358,8 @@ footer small{
 
     transform:scale(1.03);
 
+    color:var(--primary-dark);
+
 }
 
 .book-card img{
@@ -346,9 +382,9 @@ footer small{
 
     font-weight:600;
 
-    padding:12px 14px 6px;
+    padding:14px 14px 4px;
 
-    line-height:1.4;
+    line-height:1.35;
 
     transition:color .3s ease;
 
@@ -372,9 +408,9 @@ footer small{
 
     align-items:center;
 
-    padding:0 14px 14px;
+    padding:2px 14px 14px;
 
-    gap:10px;
+    gap:8px;
 
 }
 
@@ -518,7 +554,7 @@ CATEGORY FILTER
 
 .search-area{
 
-    max-width:600px;
+    width:100%;
 
     margin:40px auto 0;
 
@@ -568,6 +604,18 @@ CATEGORY FILTER
     border-color:var(--primary);
 
     box-shadow:0 0 0 4px rgba(249,115,22,.15);
+
+}
+
+.filter-row{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:16px;
+
+    width:100%;
 
 }
 
@@ -629,7 +677,7 @@ CATEGORY FILTER
 
     color:#D1D5DB;
 
-    font-size:13px;
+    font-size:14px;
 
     line-height:1;
 
@@ -653,9 +701,9 @@ CATEGORY FILTER
 
     justify-content:center;
 
-    gap:14px;
+    gap:10px;
 
-    margin:18px auto 20px;
+    margin:20px auto 24px;
 
     flex-wrap:wrap;
 
@@ -667,11 +715,11 @@ CATEGORY FILTER
 
     align-items:center;
 
-    gap:8px;
+    gap:6px;
 
     background:white;
 
-    padding:8px 14px;
+    padding:7px 12px;
 
     border-radius:999px;
 
@@ -681,14 +729,14 @@ CATEGORY FILTER
 
 .stat-icon{
 
-    font-size:15px;
+    font-size:14px;
 
 }
 
 
 .stat-card h3{
 
-    font-size:16px;
+    font-size:15px;
 
     color:var(--primary);
 
@@ -776,6 +824,16 @@ CATEGORY FILTER
 
     background:rgba(15,23,42,.45);
 
+    opacity:0;
+
+    transition:opacity .35s ease;
+
+}
+
+.book-sheet.active .sheet-overlay{
+
+    opacity:1;
+
 }
 
 .sheet-card{
@@ -797,6 +855,22 @@ CATEGORY FILTER
     padding:48px 32px 36px;
 
     animation:sheetUp .28s ease;
+
+    transition:
+        transform .35s ease,
+        opacity .35s ease;
+
+    transform:translateY(-50%,40px);
+
+    opacity:0;
+
+}
+
+.book-sheet.active .sheet-card{
+
+    transform:translateY(-50%,0);
+
+    opacity:1;
 
 }
 
@@ -1063,14 +1137,10 @@ CATEGORY FILTER
 
         width:100%;
         max-width:none;
+        box-sizing:border-box;
 
     }
 
-    .filter-row{
-
-        grid-template-columns:1fr;
-
-    }
 
     .book-grid{
 

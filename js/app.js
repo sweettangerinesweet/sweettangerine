@@ -188,6 +188,7 @@ function createBookCard(book){
                 src="${book.cover}"
                 alt="${book.title}"
                 loading="lazy"
+                decoding="async"
             >
 
             <h3>${book.title}</h3>
