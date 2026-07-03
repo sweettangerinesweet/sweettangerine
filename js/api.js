@@ -1,4 +1,4 @@
-\const API_URL = "https://script.google.com/macros/s/AKfycbybMjThAG4_rGj0Z7jOHHiFqs1hgWT0qnGUjEsBMAQIM6ls6LKjv_RBOzb1eGwageRY/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbybMjThAG4_rGj0Z7jOHHiFqs1hgWT0qnGUjEsBMAQIM6ls6LKjv_RBOzb1eGwageRY/exec";
 
 async function getBooks() {
 
@@ -11,7 +11,12 @@ async function getBooks() {
             }
         );
 
+        console.log("Status:", response.status);
+        console.log("OK:", response.ok);
+
         const books = await response.json();
+
+        console.log("Books:", books.length);
 
         return books;
 
