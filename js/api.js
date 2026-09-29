@@ -1,28 +1,24 @@
-const API_URL = "https://script.google.com/macros/s/AKfycbybMjThAG4_rGj0Z7jOHHiFqs1hgWT0qnGUjEsBMAQIM6ls6LKjv_RBOzb1eGwageRY/exec";
+const API_URL = "./data/books.json";
 
 async function getBooks() {
 
     try {
 
-        const response = await fetch(
-            API_URL + "?t=" + Date.now(),
-            {
-                cache: "no-store"
-            }
-        );
+        const response = await fetch(API_URL);
 
-        console.log("Status:", response.status);
-        console.log("OK:", response.ok);
+        if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`);
+        }
 
         const books = await response.json();
 
-        console.log("Books:", books.length);
+        console.log("Books loaded:", books.length);
 
         return books;
 
     } catch (error) {
 
-        console.error(error);
+        console.error("Failed to load books:", error);
 
         return [];
 
