@@ -53,13 +53,13 @@ function renderBooks() {
 
     const latestSection = document.getElementById("latestSection");
     const latestContainer = document.getElementById("bookGrid");
-    const emptyState = document.getElementById("emptyState"); 
+    const emptyState = document.getElementById("emptyState");
     const button = document.getElementById("loadMoreBtn");
 
     if (!latestSection || !latestContainer) return;
 
     latestContainer.innerHTML = "";
-    
+
     // ===============================
     // EMPTY STATE
     // ===============================
@@ -302,7 +302,7 @@ function applyFilters(){
         .value
         .toLowerCase()
         .trim();
-    
+
     booksPerPage = 24;
 
     filteredBooks = allBooks.filter(book=>{
