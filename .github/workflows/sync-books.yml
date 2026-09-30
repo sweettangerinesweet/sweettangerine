@@ -1,0 +1,57 @@
+name: Sync Books
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 17 * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  sync-books:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download books from Apps Script
+        run: |
+          curl -fL \
+            "https://script.google.com/macros/s/AKfycbybMjThAG4_rGj0Z7jOHHiFqs1hgWT0qnGUjEsBMAQIM6ls6LKjv_RBOzb1eGwageRY/exec" \
+            -o data/books.json
+
+      - name: Validate JSON
+        run: |
+          python -m json.tool data/books.json > /dev/null
+
+      - name: Check book count
+        run: |
+          python - <<'PY'
+          import json
+
+          with open("data/books.json", "r", encoding="utf-8") as f:
+              books = json.load(f)
+
+          print(f"Books loaded: {len(books)}")
+
+          if len(books) < 100:
+              raise SystemExit("ERROR: Book count is unexpectedly low.")
+
+          print("Book count check passed.")
+          PY
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add data/books.json
+
+          if git diff --cached --quiet; then
+            echo "No book data changes."
+          else
+            git commit -m "Auto-sync books data"
+            git push
+          fi
